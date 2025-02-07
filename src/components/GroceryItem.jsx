@@ -1,5 +1,3 @@
-import React from "react";
-
 const GroceryItem = ({ item, onDelete }) => {
   return (
     <div className="grocery-item">

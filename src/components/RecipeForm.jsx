@@ -1,19 +1,19 @@
-import React, { useRef } from "react";
+import { useState } from "react";
 
 const RecipeForm = ({ onAddRecipe }) => {
-  const inputRef = useRef();
+  const [recipeName, setRecipeName] = useState("");
 
   const handleSubmit = () => {
-    if (inputRef.current) {
-      onAddRecipe(inputRef.current.value);
-      inputRef.current.value = "";
+    if (recipeName.trim()) {
+      onAddRecipe(recipeName);
+      setRecipeName("");
     }
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      onAddRecipe(e.target.value);
-      e.target.value = "";
+    if (e.key === "Enter" && recipeName.trim()) {
+      onAddRecipe(recipeName);
+      setRecipeName("");
     }
   };
 
@@ -21,7 +21,8 @@ const RecipeForm = ({ onAddRecipe }) => {
     <div className="new-recipe">
       <input
         type="text"
-        ref={inputRef}
+        value={recipeName}
+        onChange={(e) => setRecipeName(e.target.value)}
         placeholder="New recipe name"
         onKeyDown={handleKeyDown}
       />

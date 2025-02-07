@@ -1,4 +1,3 @@
-import React from "react";
 import GroceryItem from "./GroceryItem";
 
 const RecipeGroup = ({ recipe, items, onDeleteItem }) => {
